@@ -1,11 +1,9 @@
 <!--留言板模块-->
 <div ms-controller="postMessage" id="postMessage">
     <div class="pannel-box content-message-post" id="msgSendBox">
-        <h2 class="pannel-title">{{__('lc_document_postMessage')}}
-            <small>
-                <a href="javascript:void(0)" ms-on-click="@cancelReply">{{__('label_messageBoard_cancelReply')}}</a>
-            </small>
-        </h2>
+        <small :visible="@replyState">
+            <a href="javascript:void(0)" ms-on-click="@cancelReply">{{__('label_messageBoard_cancelReply')}}</a>
+        </small>
         <div class="give-message">
             <form name="postMsgForm" ms-validate="@validate">
                 <input id="contentId" type="hidden" value="{{post._id}}" />
@@ -28,8 +26,8 @@
     </div>
 
     <div :visible="@messageList.length>0" class="pannel-box content-message-list">
-        <h1 class="pannel-title">{{__('label_messageBoard_messagelist')}}（
-            <span ms-text="@messageList.length"></span> ）</h1>
+        <h4 class="pannel-title">{{__('label_messageBoard_messagelist')}}（
+            <span style="display: inline;" ms-text="@messageList.length"></span> ）</h4>
         <div class="content-list">
             <ul>
                 <li ms-for="item in @messageList">

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html class="{{pageType}}">
+<html>
 
 <head>
-    {% header adaptor="ie" %}
+    {% header adaptor="modernizr" %}
 
-    <!-- 引入组件库 -->
-    {% plugin name="twitter-bootstrap font-awesome" %}
-    {% endplugin %}
+    <!-- 模板静态资源 -->
+    {% assets 'base.css m.css main.js index.js swiper.min.css swiper.min.js banner.js' %}
+    {% endassets %}
 
     <!-- 二次开发静态资源 -->
     {% assets 'dora.front.js white.css' %}
@@ -14,15 +14,18 @@
 
     {% endheader %}
 
-    <input type="hidden" value="{{lsk}}" id="sysKeys">
+
 </head>
 
+
 <body>
+    <input type="hidden" value="{{lsk}}" id="sysKeys">
     {% include "./public/header.html" %}
-    <div class="mainbody" id="{{pageType}}">
-        <input type="hidden" value="{{site.lang}}" id="siteLang">
-        {% block content %}{% endblock %}
-    </div>
+    <div class="clear blank"></div>
+
+    <input type="hidden" value="{{site.lang}}" id="siteLang">
+    {% block content %}{% endblock %}
+
     {% include "./public/footer.html" %}
 </body>
 
