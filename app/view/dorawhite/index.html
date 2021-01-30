@@ -32,14 +32,14 @@
   <div class="tuijian-news box whitebg tab-num01">
     <div class="gd-box">
       <ul id="tab">
-        <li class="tab-current">DoraCMS</li>
-        <li class="">前端开发2</li>
+        <li class="tab-current">公司新闻</li>
+        <li class="">行业资讯</li>
       </ul>
     </div>
     <div id="tab-content">
 
       <section>
-        {% recommend key="tabContents",pageSize=7,"typeId"="Ek7skiaw" %}
+        {% recommend key="tabContents",pageSize=7,"typeId"="E1lagiaw" %}
         <div class="tuijian-news-pic"><i><a href="/"><img src="{{tabContents[0].sImg}}"><span>推荐</span></a></i>
           <h2><a href="{{tabContents[0].url}}">{{tabContents[0].title}}</a></h2>
           <p>{{tabContents[0].discription}}</p>
@@ -63,7 +63,7 @@
       </section>
 
       <section>
-        {% recommend key="tabContents",pageSize=7,"typeId"="Nycd05pP" %}
+        {% recommend key="tabContents",pageSize=7,"typeId"="V1U2-a9le" %}
         <div class="tuijian-news-pic"><i><a href="/"><img src="{{tabContents[0].sImg}}"><span>推荐</span></a></i>
           <h2><a href="{{tabContents[0].url}}">{{tabContents[0].title}}</a></h2>
           <p>{{tabContents[0].discription}}</p>
@@ -102,7 +102,7 @@
   <div class="pics box whitebg tab-num02">
     <div class="gd-box">
       <ul id="tab">
-        {% childnav key="tabTwoTitle","pageSize"=10,"typeId"="Nycd05pP" %}
+        {% childnav key="tabTwoTitle","pageSize"=10,"typeId"="Ek7skiaw" %}
         {% for cateItem in tabTwoTitle.cates %}
         {% if cateItem.parentId != '0' %}
         {% if loop.index0 == 0 %}
@@ -139,54 +139,6 @@
     </div>
   </div>
   <!-- pics end-->
-  <div class="clear blank"></div>
-  <div class="news box whitebg tab-num03">
-    <div class="gd-box">
-      <ul id="tab">
-        {% childnav key="tabThreeTitle","typeId"="Ek7skiaw" %}
-        {% for cateItem in tabThreeTitle.cates %}
-        {% if cateItem.parentId != '0' %}
-        {% if loop.index0 == 0 %}
-        {% set currentClass = 'tab-current' %}
-        {% else %}
-        {% set currentClass = '' %}
-        {% endif %}
-        <li class="{{currentClass}}">{{cateItem.name}}</li>
-        {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-    <div id="tab-content">
-      {% for cateItem in tabThreeTitle.cates %}
-      {% if cateItem.parentId != '0' %}
-      <section>
-        {% news key="tabThreeContents","pageSize"=8,"typeId"=cateItem._id %}
-        <div class="news-zuixin">
-          <ul>
-            {% for contentItem in tabThreeContents %}
-            <li>
-              <section><a href="{{contentItem.url}}" class="news-zuixin-pic"><img src="{{contentItem.sImg}}"></a>
-                <h2><a href="{{contentItem.url}}">{{contentItem.title}}</a></h2>
-                <p>
-                  {{contentItem.discription}}
-                </p>
-                <span>
-                  {% for tag in contentItem.tags %}
-                  <a href="/">{{tag.name}}</a>
-                  {% endfor %}
-                </span>
-              </section>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <span class="tab-a-more"><a href="{{cateItem.url}}" title="更多"><i></i><i></i><i></i></a></span>
-      </section>
-      {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-  <!-- news end-->
   <div class="clear"></div>
   {% ads name="indexTop2Left" %}
   {% ads name="indexTop2Right" %}
@@ -194,22 +146,7 @@
   <div class="ad ad-small fr">{{adsPannel.slider(indexTop2Right)}}</div>
 
   <!-- videos end-->
-  <div class="clear"></div>
-
-  <div class="whitebg box tags">
-    <div class="news-title">
-      <h2>热门标签</h2>
-      <span class="tab-a-more"><a href="javascript:void(0)" title="更多"><i></i><i></i><i></i></a></span>
-    </div>
-    <ul>
-      {% tags pageSize=20 %}
-      {% for tagItem in tags %}
-      <a href="/tag/{{tagItem.name}}" target="_blank">{{tagItem.name}}</a>
-      {% endfor %}
-
-    </ul>
-  </div>
-  <!-- tags end-->
+  
   <div class="blank clear"></div>
   <div class="links whitebg box ">
     <div class="news-title">
