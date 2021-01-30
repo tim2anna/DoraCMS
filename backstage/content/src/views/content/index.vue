@@ -1,11 +1,6 @@
 <template>
   <div :class="classObj" class="content">
     <div class="main-container">
-      <DirectUser
-        :targetEditor="adminUserInfo.targetEditor"
-        :dialogState="directUserFormState"
-        :ids="selectlist"
-      />
       <DraftTable :dialogState="draftContentDialog" />
       <MoveCate :dialogState="moveCateFormState" :ids="selectlist" />
       <el-row class="dr-datatable">
@@ -29,7 +24,6 @@
 </template>
 <script>
 import DataTable from "./dataTable.vue";
-import DirectUser from "./directUser.vue";
 import DraftTable from "./draftTable";
 import MoveCate from "./moveCate.vue";
 import TopBar from "../common/TopBar.vue";
@@ -50,7 +44,6 @@ export default {
     DataTable,
     TopBar,
     Pagination,
-    DirectUser,
     MoveCate,
     DraftTable
   },
@@ -62,7 +55,6 @@ export default {
   computed: {
     ...mapGetters([
       "contentList",
-      "directUserFormState",
       "adminUserInfo",
       "moveCateFormState",
       "draftContentDialog"

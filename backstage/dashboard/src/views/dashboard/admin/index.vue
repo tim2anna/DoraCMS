@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard-editor-container">
-    <github-corner style="position: absolute; top: 0px; border: 0; right: 0;" />
     <div class="notice-box">
       <div class="client-notice" v-html="noticeInfo"></div>
       <div class="update-notice" v-if="vNo.newVersion>vNo.oldVersion">
@@ -25,26 +24,6 @@
     <el-row :gutter="8">
       <el-col
         :xs="{span: 24}"
-        :sm="{span: 24}"
-        :md="{span: 24}"
-        :lg="{span: 11}"
-        :xl="{span: 12}"
-        style="padding-right:8px;margin-bottom:30px;"
-      >
-        <transaction-table :messages="basicInfo.messages" />
-      </el-col>
-      <el-col
-        :xs="{span: 24}"
-        :sm="{span: 12}"
-        :md="{span: 12}"
-        :lg="{span: 6}"
-        :xl="{span: 6}"
-        style="margin-bottom:30px;"
-      >
-        <user-list :regUsers="basicInfo.regUsers" />
-      </el-col>
-      <el-col
-        :xs="{span: 24}"
         :sm="{span: 12}"
         :md="{span: 12}"
         :lg="{span: 7}"
@@ -58,22 +37,18 @@
 </template>
 
 <script>
-import GithubCorner from "@/components/GithubCorner";
 import PanelGroup from "./components/PanelGroup";
 import ResourceView from "./components/ResourceView.vue";
 import TransactionTable from "./components/TransactionTable";
-import UserList from "./components/UserList";
 import BoxCard from "./components/BoxCard";
 import { renderTreeData } from "@/utils";
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "DashboardAdmin",
   components: {
-    GithubCorner,
     PanelGroup,
     ResourceView,
     TransactionTable,
-    UserList,
     BoxCard
   },
   data() {

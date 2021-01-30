@@ -168,18 +168,6 @@ module.exports = appInfo => {
     },
     // doraContentCategoryPluginEnd
 
-    // doraContentMessagePluginBegin
-    contentMessageRouter: {
-      match: [ctx => ctx.path.startsWith('/manage/contentMessage'), ctx => ctx.path.startsWith('/api/contentMessage')],
-    },
-    // doraContentMessagePluginEnd
-
-    // doraContentTagsPluginBegin
-    contentTagRouter: {
-      match: [ctx => ctx.path.startsWith('/manage/contentTag'), ctx => ctx.path.startsWith('/api/contentTag')],
-    },
-    // doraContentTagsPluginEnd
-
     // doraContentTempPluginBegin
     contentTempRouter: {
       match: ['/manage/template/getTemplateForderList',

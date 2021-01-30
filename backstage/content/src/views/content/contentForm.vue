@@ -53,25 +53,6 @@
           <el-input size="small" v-model="formState.formData.keywords"></el-input>
         </el-form-item>
 
-        <el-form-item label="标签" prop="tags">
-          <el-select
-            size="small"
-            v-model="formState.formData.tags"
-            multiple
-            filterable
-            allow-create
-            default-first-option
-            :placeholder="$t('validate.selectNull', {label: this.$t('contents.tags')})"
-          >
-            <el-option
-              v-for="item in contentTagList.docs"
-              :key="item._id"
-              :label="item.name"
-              :value="item._id"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-
         <el-form-item :label="$t('contents.sImg')" prop="sImgType">
           <el-radio v-model="formState.formData.sImgType" label="2">上传</el-radio>
           <el-radio v-model="formState.formData.sImgType" label="1">自动生成</el-radio>
@@ -309,31 +290,6 @@ export default {
             max: 50,
             message: this.$t("validate.rangelength", { min: 2, max: 50 }),
             trigger: "blur"
-          }
-        ],
-        tags: [
-          {
-            required: true,
-            message: this.$t("validate.inputNull", {
-              label: this.$t("contents.tags")
-            }),
-            trigger: "blur"
-          },
-          {
-            validator: (rule, value, callback) => {
-              if (_.isEmpty(value)) {
-                callback(
-                  new Error(
-                    this.$t("validate.selectNull", {
-                      label: this.$t("contents.tags")
-                    })
-                  )
-                );
-              } else {
-                callback();
-              }
-            },
-            trigger: "change"
           }
         ],
         discription: [
@@ -663,16 +619,6 @@ export default {
               });
             } else {
               // 新增
-              if (
-                !_.isEmpty(this.adminUserInfo) &&
-                !_.isEmpty(this.adminUserInfo.targetEditor)
-              ) {
-                params.targetUser = this.adminUserInfo.targetEditor._id;
-              } else {
-                this.$message.error("在添加文档之前，您需要指定一个默认编辑！");
-                this.$router.push(this.$root.adminBasePath + "/content");
-                return false;
-              }
               addContent(params).then(result => {
                 if (result.status === 200) {
                   this.$router.push(this.$root.adminBasePath + "/content");
@@ -786,20 +732,13 @@ export default {
         if (result.status === 200) {
           if (result.data) {
             let contentObj = result.data,
-              categoryIdArr = [],
-              tagsArr = [];
+              categoryIdArr = [];
 
             if (contentObj.categories) {
               contentObj.categories.map((item, index) => {
                 item && categoryIdArr.push(item._id);
               });
               contentObj.categories = categoryIdArr;
-            }
-            if (contentObj.tags) {
-              contentObj.tags.map((item, index) => {
-                item && tagsArr.push(item._id);
-              });
-              contentObj.tags = tagsArr;
             }
             if (contentObj.keywords) {
               contentObj.keywords = contentObj.keywords.join();

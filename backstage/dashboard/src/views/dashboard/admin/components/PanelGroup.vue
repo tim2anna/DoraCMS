@@ -13,34 +13,12 @@
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
-        <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="peoples" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">{{$t('main.regUserTotalNum')}}</div>
-          <count-to :start-val="0" :end-val="basicInfo.regUserCount" :duration="600" class="card-panel-num"/>
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-money">
           <svg-icon icon-class="documentation" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">{{$t('main.contentsTotalNum')}}</div>
           <count-to :start-val="0" :end-val="basicInfo.contentCount" :duration="400" class="card-panel-num"/>
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel">
-        <div class="card-panel-icon-wrapper icon-shoppingCard">
-          <svg-icon icon-class="message" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">{{$t('main.messagesTotalNum')}}</div>
-          <count-to :start-val="0" :end-val="basicInfo.messageCount" :duration="600" class="card-panel-num"/>
         </div>
       </div>
     </el-col>

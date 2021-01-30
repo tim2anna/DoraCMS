@@ -4,11 +4,6 @@
       <el-button size="small" type="primary" plain @click="addContent('content')" round>
         <svg-icon icon-class="icon_add" />
       </el-button>
-      <el-tooltip class="item" effect="dark" content="绑定编辑" placement="top">
-        <el-button size="small" type="warning" plain @click="directUser('content')" round>
-          <svg-icon icon-class="direct_user" />
-        </el-button>
-      </el-tooltip>
       <el-tooltip class="item" effect="dark" content="批量移动" placement="top">
         <el-button size="small" type="success" plain round @click="moveCate('content')">
           <svg-icon icon-class="icon_move" />
@@ -140,9 +135,6 @@ export default {
     addContent() {
       this.$store.dispatch("content/showContentForm");
       this.$router.push(this.$root.adminBasePath + "/content/addContent");
-    },
-    directUser() {
-      this.$store.dispatch("content/showDirectUserForm");
     },
     moveCate() {
       this.$store.dispatch("content/showMoveCateForm");
