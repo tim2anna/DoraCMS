@@ -25,19 +25,6 @@
         <el-form-item :label="$t('ads.link')" prop="link">
           <el-input size="small" v-model="formState.formData.link"></el-input>
         </el-form-item>
-        <el-form-item :label="$t('ads.appLink')" prop="appLink">
-          <el-input size="small" v-model="formState.formData.appLink"></el-input>
-        </el-form-item>
-        <el-form-item :label="$t('ads.appLinkType')" prop="appLinkType">
-          <el-select v-model="formState.formData.appLinkType" placeholder="请选择app链接类型">
-            <el-option
-              v-for="item in linkTypeOpts"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </el-form-item>
         <el-form-item :label="$t('ads.upload')" prop="sImg">
           <el-upload
             class="avatar-uploader"
@@ -115,15 +102,6 @@ export default {
             }),
             trigger: "blur"
           }
-        ],
-        link: [
-          {
-            required: true,
-            message: this.$t("validate.inputNull", {
-              label: this.$t("main.comments_label")
-            }),
-            trigger: "blur"
-          }
         ]
       },
       rules: {
@@ -141,15 +119,6 @@ export default {
             message: this.$t("validate.ranglengthandnormal", {
               min: 2,
               max: 30
-            }),
-            trigger: "blur"
-          }
-        ],
-        link: [
-          {
-            required: true,
-            message: this.$t("validate.inputNull", {
-              label: this.$t("main.comments_label")
             }),
             trigger: "blur"
           }

@@ -35,26 +35,6 @@
             clearable
             change-on-select
           ></el-cascader>
-          <el-select
-            class="dr-searchInput"
-            v-model="pageInfo.uAuthor"
-            size="small"
-            clearable
-            filterable
-            remote
-            reserve-keyword
-            placeholder="请输入用户名"
-            @change="changeUserOptions"
-            :remote-method="remoteMethod"
-            :loading="loading"
-          >
-            <el-option
-              v-for="item in selectUserList"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
           <el-input
             class="dr-searchInput"
             style="width:180px"
@@ -193,37 +173,6 @@ export default {
       this.$store.dispatch("content/getContentList", {
         searchkey
       });
-    },
-    remoteMethod(query) {
-      if (query !== "") {
-        this.loading = true;
-        let _this = this;
-        this.queryUserListByParams({ searchkey: query, group: "1" });
-      } else {
-        this.selectUserList = [];
-      }
-    },
-    queryUserListByParams(params = {}) {
-      let _this = this;
-      regUserList(params)
-        .then(result => {
-          let specialList = result.data.docs;
-          if (specialList) {
-            _this.selectUserList = specialList.map(item => {
-              return {
-                value: item._id,
-                label: item.userName
-              };
-            });
-            _this.loading = false;
-          } else {
-            _this.selectUserList = [];
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          _this.selectUserList = [];
-        });
     },
     changeUserOptions(value) {
       this.$store.dispatch("content/getContentList", { uAuthor: value });

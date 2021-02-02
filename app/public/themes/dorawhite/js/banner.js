@@ -9,6 +9,7 @@ jQuery(document).ready(function($){
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: 5000,
+        loop: true,
         autoplayDisableOnInteraction: false
     });
 	

@@ -4,9 +4,6 @@
 <article>
     <div class="left-box">
         <div class="whitebg">
-            <div class="news-title"><span class="weizhi">您现在的位置是：<a href="/">首页</a>><a href="/">文档内容页</a></span>
-                <h2>文档详情</h2>
-            </div>
             <div class="newstext-box">
                 <h1 class="news-title-h1">{{post.title}}</h1>
                 <div class="keywords">
@@ -27,18 +24,6 @@
                 </div>
                 <div class="newstext">
                     {{post.comments | safe}}
-                </div>
-                <div class="diggit"><a href="JavaScript:devIng('{{post._id}}');">
-                        很赞哦！ </a>(<b id="diggnum"> {{post.likeNum}}
-                    </b>)</div>
-                <div class="clear"></div>
-                <div class="share"><img src="{{staticThemePath}}/images/wxgzh.jpg">
-                    <div class="share-text">
-                        <p>扫描关注DoraCMS QQ群，第一时间获取DoraCMS更新动态</p>
-                        <p>转载请说明来源于"{{site.title}}"</p>
-                        <p>本文地址：<a href="{{site.configs.siteDomain}}{{post.url}}"
-                                target="_blank">{{site.configs.siteDomain}}{{post.url}}</a></p>
-                    </div>
                 </div>
                 <div class="clear"></div>
                 <div class="info-pre-next">
@@ -67,36 +52,8 @@
             </div>
         </div>
         <div class="clear blank"></div>
-
-        {% include "../public/randomList.html" %}
-
-        <div class="ad ad-big"> <a href="/" target="_blank"><img
-                    src="https://www.yangqq.com/d/file/p/2018-12-29/8793672fca8dae2ce093aa46546f8e22.gif"></a> </div>
-        <div class="pinglun-box whitebg" style="margin-bottom: 15px;">
-            <div class="news-title">
-                <h2>文章评论</h2>
-            </div>
-            <div class="pinglun">
-                <div id="plpost">
-                    {% include "../public/msgBoard.html" %}
-                </div>
-            </div>
-        </div>
     </div>
     <aside class="side-section right-box">
-        {% include "../public/mixHotRightBox.html" %}
-        {% ads name="detailLeft1" %}
-        <div class="ad ad-small">{{adsPannel.slider(detailLeft1)}}</div>
-        <div class="whitebg cloud">
-            {% tags pageSize=20 %}
-            <h2 class="side-title">标签云</h2>
-            <ul>
-                {% for tagItem in tags %}
-                <a href="/tag/{{tagItem.name}}" target="_blank">{{tagItem.name}}</a>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="clear blank"></div>
         {% include "../public/newItemList.html" %}
     </aside>
 </article>

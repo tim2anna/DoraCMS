@@ -643,7 +643,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      "contentTagList",
       "contentCategoryList",
       "adminUserInfo",
       "contentCoverDialog"
@@ -801,9 +800,6 @@ export default {
       }
     }
     this.$store.dispatch("contentCategory/getContentCategoryList");
-    this.$store.dispatch("contentTag/getContentTagList", {
-      pageSize: 200
-    });
   }
 };
 </script>

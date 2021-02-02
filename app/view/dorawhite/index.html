@@ -28,96 +28,17 @@
   </div>
   <!-- headline-box end-->
   <div class="clear blank"></div>
-  <!-- tuijian-news begin-->
-  <div class="tuijian-news box whitebg tab-num01">
-    <div class="gd-box">
-      <ul id="tab">
-        <li class="tab-current">公司新闻</li>
-        <li class="">行业资讯</li>
-      </ul>
-    </div>
-    <div id="tab-content">
-
-      <section>
-        {% recommend key="tabContents",pageSize=7,"typeId"="E1lagiaw" %}
-        <div class="tuijian-news-pic"><i><a href="/"><img src="{{tabContents[0].sImg}}"><span>推荐</span></a></i>
-          <h2><a href="{{tabContents[0].url}}">{{tabContents[0].title}}</a></h2>
-          <p>{{tabContents[0].discription}}</p>
-          <a href="#" class="btn-blue-border">阅读更多</a>
-        </div>
-
-        <div class="tuijian-news-list">
-          <ul>
-            {% for contentItem in tabContents%}
-            {% if loop.index0 > 0 %}
-            <li><a target="_blank"
-                href="{{contentItem.url}}"><span><b>{{contentItem.date | formatDateForMini('justdate')}}</b>{{contentItem.date | formatDateForMini('month')}}</span>
-                <h3>{{contentItem.title}}</h3>
-                <p>{{contentItem.discription}}</p>
-              </a></li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-        <span class="tab-a-more"><a href="/document___Ek7skiaw" title="更多"><i></i><i></i><i></i></a></span>
-      </section>
-
-      <section>
-        {% recommend key="tabContents",pageSize=7,"typeId"="V1U2-a9le" %}
-        <div class="tuijian-news-pic"><i><a href="/"><img src="{{tabContents[0].sImg}}"><span>推荐</span></a></i>
-          <h2><a href="{{tabContents[0].url}}">{{tabContents[0].title}}</a></h2>
-          <p>{{tabContents[0].discription}}</p>
-          <a href="#" class="btn-blue-border">阅读更多</a>
-        </div>
-
-        <div class="tuijian-news-list">
-          <ul>
-            {% for contentItem in tabContents%}
-            {% if loop.index0 > 0 %}
-            <li><a target="_blank"
-                href="{{contentItem.url}}"><span><b>{{contentItem.date | formatDateForMini('justdate')}}</b>{{contentItem.date | formatDateForMini('month')}}</span>
-                <h3>{{contentItem.title}}</h3>
-                <p>{{contentItem.discription}}</p>
-              </a></li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-        <span class="tab-a-more"><a href="/front-development___Nycd05pP" title="更多"><i></i><i></i><i></i></a></span>
-      </section>
-
-    </div>
-  </div>
-  <!-- tuijian-news end-->
-  <div class="clear"></div>
-  {% ads name="indexTop1Left" %}
-  <div class="ad ad-big fl">
-    {{adsPannel.slider(indexTop1Left)}}
-  </div>
-  {% ads name="indexTop1Right" %}
-  <div class="ad ad-small fr">
-    {{adsPannel.slider(indexTop1Right)}}
-  </div>
-  <div class="clear"></div>
+  
+  {% childnav key="tabTwoTitle","pageSize"=10,"typeId"="Ek7skiaw" %}
+  {% for cateItem in tabTwoTitle.cates %}
+  {% if cateItem.parentId != '0' %}
   <div class="pics box whitebg tab-num02">
     <div class="gd-box">
       <ul id="tab">
-        {% childnav key="tabTwoTitle","pageSize"=10,"typeId"="Ek7skiaw" %}
-        {% for cateItem in tabTwoTitle.cates %}
-        {% if cateItem.parentId != '0' %}
-        {% if loop.index0 == 0 %}
-        {% set currentClass = 'tab-current' %}
-        {% else %}
-        {% set currentClass = '' %}
-        {% endif %}
-        <li class="{{currentClass}}">{{cateItem.name}}</li>
-        {% endif %}
-        {% endfor %}
+        <li class="tab-current">{{cateItem.name}}</li>
       </ul>
     </div>
     <div id="tab-content">
-      {% for cateItem in tabTwoTitle.cates %}
-      {% if cateItem.parentId != '0' %}
       <section>
         {% news key="tabTwoContents","pageSize"=7,"typeId"=cateItem._id %}
         <div class="pic-list-img">
@@ -133,27 +54,30 @@
             {% endfor %}
           </ul>
         </div>
-        <span class="tab-a-more"><a href="{{cateItem.url}}" title="更多"><i></i><i></i><i></i></a></span></section>
-      {% endif %}
-      {% endfor %}
+        <span class="tab-a-more"><a href="{{cateItem.url}}" title="更多">更多</a></span>
+      </section>
     </div>
   </div>
-  <!-- pics end-->
-  <div class="clear"></div>
-  {% ads name="indexTop2Left" %}
-  {% ads name="indexTop2Right" %}
-  <div class="ad ad-big fl">{{adsPannel.slider(indexTop2Left)}}</div>
-  <div class="ad ad-small fr">{{adsPannel.slider(indexTop2Right)}}</div>
+  <div class="clear blank"></div>
+  {% endif %}
+  {% endfor %}
 
-  <!-- videos end-->
-  
-  <div class="blank clear"></div>
   <div class="links whitebg box ">
     <div class="news-title">
-      <h2>友情链接</h2>
+      <h2>合作客户</h2>
     </div>
-    {% ads name="frendlink" %}
-    {{adsPannel.slider(frendlink)}}
+    {% ads name="partner" %}
+    <div class="gap-img-ads">
+      <ul>
+          {% for item in partner.items %}
+          <li class="col-xs-6 col-sm-4 col-md-2" style="margin: 10px 0;">
+              <a href="{{item.link}}" target="_blank">
+                  <img src="{{item.sImg}}" alt="{{item.title}}" style="height: 50px;">
+              </a>
+          </li>
+          {% endfor %}
+      </ul>
+    </div>
   </div>
   <!-- links end-->
   <div class="blank clear"></div>

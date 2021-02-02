@@ -55,11 +55,6 @@
           <div v-else>{{scope.row.title}}</div>
         </template>
       </el-table-column>
-      <el-table-column prop="author.name" :label="$t('contents.author')" show-overflow-tooltip>
-        <template
-          slot-scope="scope"
-        >{{scope.row.uAuthor?scope.row.uAuthor.userName:(scope.row.author?scope.row.author.userName:'')}}</template>
-      </el-table-column>
       <el-table-column prop="updateDate" :label="$t('contents.updateDate')" width="180">
         <template slot-scope="scope">{{scope.row.updateDate}}</template>
       </el-table-column>
@@ -73,15 +68,6 @@
           <span>{{(scope.row.categories&&scope.row.categories[scope.row.categories.length-1])?scope.row.categories[scope.row.categories.length-1].name:''}}</span>
         </template>
       </el-table-column>
-
-      <el-table-column prop="tags" :label="$t('contents.tags')" show-overflow-tooltip>
-        <template slot-scope="scope">
-          <span v-for="tag in scope.row.tags" :key="tag._id">{{tag.name+','}}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column prop="clickNum" :label="$t('contents.clickNum')" show-overflow-tooltip></el-table-column>
-      <el-table-column prop="commentNum" :label="$t('contents.commentNum')" show-overflow-tooltip></el-table-column>
       <el-table-column prop="state" :label="$t('contents.enable')" show-overflow-tooltip>
         <template slot-scope="scope">
           <svg-icon v-show="scope.row.state=='2'" :style="green" icon-class="check-circle-fill" />
