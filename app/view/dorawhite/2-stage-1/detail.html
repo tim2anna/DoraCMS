@@ -14,10 +14,6 @@
                                 {% endif %}
                             </h2>
                             <ul class="post-meta content-author">
-                                <li class="author-name">
-                                    {% if post.author %} {{post.author.userName}} {% else %}
-                                    {{post.uAuthor.userName}} {% endif %}
-                                </li>
                                 <li>
                                     {% set cateInfo = (post.categories[0]) %}
                                     <span class="dot">&nbsp;•&nbsp;</span>

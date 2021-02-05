@@ -12,9 +12,7 @@
 
                     {% endfor %}
                 </div>
-                <div class="picview-other"> <span class="po-from">{% if post.uAuthor %}
-                        {{post.uAuthor.userName}} {% else %}
-                        {{post.author.userName}} {% endif %}</span><span class="po-date">{{post.date}}</span>
+                <div class="picview-other"> <span class="po-date">{{post.date}}</span>
                     {% set cateInfo = (post.categories[0]) %}
                     <span class="po-classname"><a href="{{cateInfo.url}}"
                             target="_blank">{{(post.categories[post.categories.length-1]).name}}</a></span><span
